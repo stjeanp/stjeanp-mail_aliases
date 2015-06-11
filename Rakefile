@@ -7,6 +7,8 @@ PuppetLint.configuration.fail_on_warnings
 PuppetLint.configuration.send('disable_80chars')
 PuppetLint.configuration.ignore_paths = ["spec/**/*.pp", "pkg/**/*.pp"]
 
+task :default => :test
+
 desc "Run syntax, lint, and rspec tests..."
 task :test => [
   :validate,
