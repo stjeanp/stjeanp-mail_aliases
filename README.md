@@ -1,4 +1,4 @@
-#mail_aliases [![Build Status](https://travis-ci.org/stjeanp/stjeanp-mail_aliases.svg?branch=master)](https://travis-ci.org/stjeanp/stjeanp-mail_aliases)
+#mail_aliases [![Build Status](https://travis-ci.org/stjeanp/stjeanp-mail_aliases.svg?branch=master)](https://travis-ci.org/stjeanp/stjeanp-mail_aliases) [![Coverage Status](https://coveralls.io/repos/stjeanp/stjeanp-mail_aliases/badge.svg)](https://coveralls.io/r/stjeanp/stjeanp-mail_aliases)
 
 ####Table of Contents
 

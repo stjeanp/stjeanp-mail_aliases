@@ -154,6 +154,4 @@ describe 'mail_aliases', :type => :class do
       'ensure'    => 'absent',
     ) }
   end
-
-  at_exit { RSpec::Puppet::Coverage.report! }
 end

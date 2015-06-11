@@ -1,5 +1,9 @@
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
+puppet_version = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : '~> 3'
+
+gem 'coveralls', :require =>false
+
 group :development, :test do
   gem 'rake',                    :require => false
   gem 'rspec-puppet',            :require => false
