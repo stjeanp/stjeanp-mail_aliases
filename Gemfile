@@ -1,11 +1,12 @@
 source ENV['GEM_SOURCE'] || "https://rubygems.org"
 
-puppet_version = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : '~> 3'
+puppet_version = ENV.key?('PUPPET_VERSION') ? ENV['PUPPET_VERSION'] : '~> 4.2'
 
 group :development, :test do
-  gem 'rake',                    :require => false
+  gem 'rake', '>= 10.0.0'
   gem 'rspec-puppet',            :require => false
   gem 'puppetlabs_spec_helper',  :require => false
+  gem 'metadata-json-lint',      :require => false
   gem 'puppet-lint',             :require => false
 end
 
