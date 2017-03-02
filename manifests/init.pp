@@ -62,7 +62,7 @@ class mail_aliases {
   # We need a default hash in case there's no hiera data
   $not_found = { 'not found' => 'not found' }
 
-  # Do a deep merge of all matching 'mail_aliases' data from hiera
+  # Get all 'mail_aliases' data from hiera
   $alias_hash = hiera_hash('mail_aliases', $not_found)
 
   if has_key($alias_hash, 'not found') {
