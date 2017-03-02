@@ -7,7 +7,6 @@
 3. [Setup - The basics of getting started with mail_aliases](#setup)
     * [What mail_aliases affects](#what-mail_aliases-affects)
     * [Setup requirements](#setup-requirements)
-    * [Beginning with mail_aliases](#beginning-with-mail_aliases)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
@@ -29,13 +28,8 @@ The mail_aliases module manages mail aliases on the target systems using data st
 
 ###Setup Requirements **REQUIRED**
 
-* You must enable deep hash merges in your hiera configuration.
-* You must install the deep_merge gem for this module to function correctly.
+* Deep merging is no longer required. Puppet's native merging works perfectly.
 	
-###Beginning with mail_aliases	
-
-Ensure that deep merges are enabled in hiera and that you've installed the deep_merge gem.
-
 ##Usage
 
 In at least one level of your hiera data, create aliases you wish to manage.
