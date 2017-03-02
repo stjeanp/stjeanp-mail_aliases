@@ -34,7 +34,7 @@
 # been a change
 
 class mail_aliases {
-  case $facts['os']['family'] {
+  case $::facts['os']['family'] {
     'RedHat': {
       $aliases_file = '/etc/aliases'
       $newaliases = '/usr/bin/newaliases'
@@ -48,7 +48,7 @@ class mail_aliases {
       $newaliases = '/usr/bin/newaliases'
     }
     default: {
-      fail("OS family '${facts['os']['family']}' is not supported by this module.")
+      fail("OS family '${::facts['os']['family']}' is not supported by this module.")
     }
   }
 
