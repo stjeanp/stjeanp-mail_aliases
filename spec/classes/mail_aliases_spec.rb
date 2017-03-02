@@ -7,11 +7,11 @@ describe 'mail_aliases', :type => :class do
   end
 
   context 'Unsupported OS' do
-    let :facts do
-      {
-        :osfamily => 'Solaris',
+    let(:facts) {{
+      :os => {
+        :family => 'Solaris'
       }
-    end
+    }}
 
     it do
       expect {
@@ -20,138 +20,50 @@ describe 'mail_aliases', :type => :class do
     end
   end
 
-  context 'RedHat OS and no hiera data' do
-    let :facts do
-      {
-        :osfamily => 'RedHat',
+  ['RedHat', 'Debian', 'Suse'].each do |osfam|
+    context "${osfam} OS and no hiera data" do
+      let(:facts) {{
+        :os => {
+          :family => osfam
+        },
         :testname => 'no_hiera_data'
-      }
+      }}
+
+      it { should compile }
+      it { should contain_class('mail_aliases') }
+      it { should have_mailalias_resource_count(0) }
     end
 
-    it { should compile }
-    it { should contain_class('mail_aliases') }
-    it { should have_mailalias_resource_count(0) }
-  end
-
-  context 'Debian OS and no hiera data' do
-    let :facts do
-      {
-        :osfamily => 'Debian',
-        :testname => 'no_hiera_data'
-      }
-    end
-
-    it { should compile }
-    it { should contain_class('mail_aliases') }
-    it { should have_mailalias_resource_count(0) }
-  end
-
-  context 'Suse OS and no hiera data' do
-    let :facts do
-      {
-        :osfamily => 'Suse',
-        :testname => 'no_hiera_data'
-      }
-    end
-
-    it { should compile }
-    it { should contain_class('mail_aliases') }
-    it { should have_mailalias_resource_count(0) }
-  end
-
-  context 'RedHat OS and hiera data' do
-    let :facts do
-      {
-        :osfamily => 'RedHat',
+    context "${osfam} OS and hiera data" do
+      let(:facts) {{
+        :os => {
+          :family => osfam
+        },
         :testname => 'with_hiera_data'
-      }
+      }}
+
+      it { should compile }
+      it { should contain_class('mail_aliases') }
+      it { should have_mailalias_resource_count(3) }
+      it { should contain_exec('newaliases').with(
+        'command'     => '/usr/bin/newaliases',
+        'refreshonly' => true,
+      ) }
+      it { should contain_mailalias('root').with(
+        'recipient' => 'admin@mailbox.com',
+        'notify'    => 'Exec[newaliases]',
+        'ensure'    => 'present',
+      ) }
+      it { should contain_mailalias('puppet').with(
+        'recipient' => 'puppetmaster@mailbox.com',
+        'notify'    => 'Exec[newaliases]',
+        'ensure'    => 'present',
+      ) }
+      it { should contain_mailalias('olduser').with(
+        'recipient' => 'movedto@another.com',
+        'notify'    => 'Exec[newaliases]',
+        'ensure'    => 'absent',
+      ) }
     end
-
-    it { should compile }
-    it { should contain_class('mail_aliases') }
-    it { should have_mailalias_resource_count(3) }
-    it { should contain_exec('newaliases').with(
-      'command'     => '/usr/bin/newaliases',
-      'refreshonly' => true,
-    ) }
-    it { should contain_mailalias('root').with(
-      'recipient' => 'admin@mailbox.com',
-      'notify'    => 'Exec[newaliases]',
-      'ensure'    => 'present',
-    ) }
-    it { should contain_mailalias('puppet').with(
-      'recipient' => 'puppetmaster@mailbox.com',
-      'notify'    => 'Exec[newaliases]',
-      'ensure'    => 'present',
-    ) }
-    it { should contain_mailalias('olduser').with(
-      'recipient' => 'movedto@another.com',
-      'notify'    => 'Exec[newaliases]',
-      'ensure'    => 'absent',
-    ) }
-  end
-
-  context 'Debian OS and hiera data' do
-    let :facts do
-      {
-        :osfamily => 'Debian',
-        :testname => 'with_hiera_data'
-      }
-    end
-
-    it { should compile }
-    it { should contain_class('mail_aliases') }
-    it { should have_mailalias_resource_count(3) }
-    it { should contain_exec('newaliases').with(
-      'command'     => '/usr/bin/newaliases',
-      'refreshonly' => true,
-    ) }
-    it { should contain_mailalias('root').with(
-      'recipient' => 'admin@mailbox.com',
-      'notify'    => 'Exec[newaliases]',
-      'ensure'    => 'present',
-    ) }
-    it { should contain_mailalias('puppet').with(
-      'recipient' => 'puppetmaster@mailbox.com',
-      'notify'    => 'Exec[newaliases]',
-      'ensure'    => 'present',
-    ) }
-    it { should contain_mailalias('olduser').with(
-      'recipient' => 'movedto@another.com',
-      'notify'    => 'Exec[newaliases]',
-      'ensure'    => 'absent',
-    ) }
-  end
-
-  context 'Suse OS and hiera data' do
-    let :facts do
-      {
-        :osfamily => 'Suse',
-        :testname => 'with_hiera_data'
-      }
-    end
-
-    it { should compile }
-    it { should contain_class('mail_aliases') }
-    it { should have_mailalias_resource_count(3) }
-    it { should contain_exec('newaliases').with(
-      'command'     => '/usr/bin/newaliases',
-      'refreshonly' => true,
-    ) }
-    it { should contain_mailalias('root').with(
-      'recipient' => 'admin@mailbox.com',
-      'notify'    => 'Exec[newaliases]',
-      'ensure'    => 'present',
-    ) }
-    it { should contain_mailalias('puppet').with(
-      'recipient' => 'puppetmaster@mailbox.com',
-      'notify'    => 'Exec[newaliases]',
-      'ensure'    => 'present',
-    ) }
-    it { should contain_mailalias('olduser').with(
-      'recipient' => 'movedto@another.com',
-      'notify'    => 'Exec[newaliases]',
-      'ensure'    => 'absent',
-    ) }
   end
 end
