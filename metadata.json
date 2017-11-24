@@ -56,6 +56,13 @@
         "6",
         "7"
       ]
+    },
+    {
+      "operatingsystem": "Solaris",
+      "operatingsystemrelease": [
+        "11.2",
+        "11.3"
+      ]
     }
   ],
   "requirements": [
