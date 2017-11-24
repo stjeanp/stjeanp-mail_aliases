@@ -47,6 +47,10 @@ class mail_aliases {
       $aliases_file = '/etc/aliases'
       $newaliases = '/usr/bin/newaliases'
     }
+    'Solaris': {
+      $aliases_file = '/etc/aliases'
+      $newaliases = '/usr/sbin/newaliases'
+    }
     default: {
       fail("OS family '${::facts['os']['family']}' is not supported by this module.")
     }

@@ -14,7 +14,7 @@
 
 ##Overview
 
-This module uses data stored in hiera to manage mail aliases on Linux systems. Currently it works on any OS that sets $::osfamily to RedHat, Debian, or Suse.
+This module uses data stored in hiera to manage mail aliases on UNIX/Linux systems. Currently it works on any OS that sets $::osfamily to RedHat, Debian, Solaris, or Suse.
 
 ##Module Description
 
@@ -63,6 +63,7 @@ This module has been tested on :
 * Debian 7.7.0
 * OpenSUSE 13.1
 * Ubuntu Server 14.04
+* Solaris 11.2 and 11.3
 
 It should work on :
 * Red Hat Enterprise Linux (RHEL) 5,6,7
