@@ -1,9 +1,0 @@
----
-mail_aliases:
-  root:
-    recipient: 'admin@mailbox.com'
-  puppet:
-    recipient: 'puppetmaster@mailbox.com'
-  olduser:
-    recipient: 'movedto@another.com'
-    ensure: absent

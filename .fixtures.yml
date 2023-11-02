@@ -1,5 +1,0 @@
-fixtures:
-  symlinks:
-    mail_aliases: "#{source_dir}"
-  repositories:
-    stdlib: "git://github.com/puppetlabs/puppetlabs-stdlib"
