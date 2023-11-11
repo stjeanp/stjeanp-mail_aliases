@@ -4,7 +4,8 @@
   "author": "Patrick St. Jean",
   "summary": "Manage sendmail/postfix mail aliases using hiera",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/stjeanp/stjeanp-mail_aliases",
+  "issues_url": "https://github.com/stjeanp/stjeanp-mail_aliases/issues",
   "dependencies": [
     {
       "name": "puppetlabs/mailalias_core",
