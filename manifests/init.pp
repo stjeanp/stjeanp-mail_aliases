@@ -18,7 +18,6 @@
 # include mail_aliases
 #
 # @author Pat St. Jean (stjeanp@pat-st-jean.com)
-
 class mail_aliases {
   case $::facts['os']['family'] {
     'RedHat': {
