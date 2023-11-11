@@ -21,7 +21,7 @@ The mail\_aliases module manages mail aliases on the target systems using data s
 
 This will only work if sendmail or postfix is installed on the target system. Please ensure that one of those packages is installed, otherwise you're going to get failures.
 
-Please ensure that the puppetlabs/mailalias\_core module is installed.
+Please ensure that the puppetlabs/mailalias\_core module is installed in your Puppetfile.
 
 ### Beginning with mail\_aliases
 
@@ -43,7 +43,7 @@ Configure your hiera data however you would like, following the example below. T
 The default behavior is to create an alias, so if you need to remove one, make sure to include the 'ensure: absent' line.
 
 ```puppet
-include mail_aliases
+include ::mail_aliases
 ```
 
 ## Limitations
